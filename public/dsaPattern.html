@@ -1,0 +1,1649 @@
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>DSA Pattern</title>
+
+<style>
+
+:root{
+
+--bg: #0b1220;
+
+--card: rgba(255,255,255,0.06);
+
+--text: rgba(255,255,255,0.88);
+
+--muted: rgba(255,255,255,0.66);
+
+--line: rgba(255,255,255,0.10);
+
+--accent: #7c3aed;
+
+--accent2:#22c55e;
+
+--codebg: rgba(0,0,0,0.35);
+
+--shadow: 0 24px 60px rgba(0,0,0,0.45);
+
+}
+
+*{ box-sizing:border-box; }
+
+html, body { height:100%; }
+
+body{
+
+margin:0;
+
+color:var(--text);
+
+background:
+
+radial-gradient(1200px 700px at 15% 10%, rgba(124,58,237,0.35), transparent 60%),
+
+radial-gradient(900px 600px at 90% 20%, rgba(34,197,94,0.20), transparent 55%),
+
+radial-gradient(1000px 800px at 50% 110%, rgba(59,130,246,0.18), transparent 55%),
+
+var(--bg);
+
+font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+
+line-height:1.65;
+
+}
+
+a{ color:inherit; }
+
+.wrap{
+
+max-width: 980px;
+
+margin: 0 auto;
+
+padding: 36px 18px 64px;
+
+}
+
+header{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+gap:16px;
+
+padding: 18px 18px;
+
+border:1px solid var(--line);
+
+background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+
+border-radius: 16px;
+
+box-shadow: var(--shadow);
+
+position: sticky;
+
+top: 14px;
+
+backdrop-filter: blur(10px);
+
+z-index: 10;
+
+}
+
+.title{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+min-width:0;
+
+}
+
+.badge{
+
+width:42px; height:42px;
+
+display:grid; place-items:center;
+
+border-radius: 12px;
+
+background: rgba(124,58,237,0.22);
+
+border: 1px solid rgba(124,58,237,0.35);
+
+flex: 0 0 auto;
+
+font-size: 20px;
+
+}
+
+h1{
+
+margin:0;
+
+font-size: 18px;
+
+letter-spacing: 0.2px;
+
+white-space: nowrap;
+
+overflow:hidden;
+
+text-overflow: ellipsis;
+
+}
+
+.subtitle{
+
+margin:0;
+
+font-size: 12px;
+
+color: var(--muted);
+
+}
+
+.actions{
+
+display:flex;
+
+gap:10px;
+
+flex-wrap:wrap;
+
+justify-content:flex-end;
+
+}
+
+.btn{
+
+border:1px solid var(--line);
+
+background: rgba(255,255,255,0.06);
+
+color: var(--text);
+
+padding: 10px 12px;
+
+border-radius: 12px;
+
+font-size: 12px;
+
+cursor: pointer;
+
+transition: 140ms ease;
+
+user-select:none;
+
+}
+
+.btn:hover{
+
+transform: translateY(-1px);
+
+border-color: rgba(255,255,255,0.18);
+
+background: rgba(255,255,255,0.08);
+
+}
+
+main{
+
+margin-top: 18px;
+
+border:1px solid var(--line);
+
+background: rgba(255,255,255,0.04);
+
+border-radius: 18px;
+
+box-shadow: var(--shadow);
+
+overflow:hidden;
+
+}
+
+.content{
+
+padding: 26px 22px 30px;
+
+}
+
+.lead{
+
+color: var(--muted);
+
+font-size: 16px;
+
+margin-top:0;
+
+}
+
+hr{
+
+border:none;
+
+border-top: 1px solid var(--line);
+
+margin: 28px 0;
+
+}
+
+h2, h3{
+
+line-height: 1.25;
+
+margin: 22px 0 10px;
+
+letter-spacing: 0.2px;
+
+}
+
+h2{ font-size: 22px; }
+
+h3{ font-size: 18px; color: rgba(255,255,255,0.92); }
+
+p{ margin: 10px 0; }
+
+ul{ margin: 10px 0 10px 22px; }
+
+li{ margin: 6px 0; }
+
+.callout{
+
+margin: 18px 0;
+
+padding: 14px 14px;
+
+border-left: 3px solid rgba(124,58,237,0.75);
+
+background: rgba(124,58,237,0.12);
+
+border-radius: 12px;
+
+color: rgba(255,255,255,0.86);
+
+}
+
+pre{
+
+margin: 14px 0;
+
+padding: 14px 14px;
+
+border-radius: 14px;
+
+border: 1px solid rgba(255,255,255,0.10);
+
+background: var(--codebg);
+
+overflow:auto;
+
+box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+
+}
+
+code{
+
+font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+font-size: 13px;
+
+}
+
+.quote{
+
+margin: 18px 0;
+
+padding: 14px 14px;
+
+border: 1px solid rgba(255,255,255,0.10);
+
+background: rgba(255,255,255,0.06);
+
+border-radius: 14px;
+
+color: rgba(255,255,255,0.82);
+
+}
+
+.sectionTag{
+
+display:inline-flex;
+
+gap:8px;
+
+align-items:center;
+
+font-size: 12px;
+
+color: rgba(255,255,255,0.72);
+
+border:1px solid rgba(255,255,255,0.12);
+
+background: rgba(255,255,255,0.04);
+
+padding: 6px 10px;
+
+border-radius: 999px;
+
+margin: 6px 0 0;
+
+}
+
+.dot{
+
+width:8px; height:8px;
+
+border-radius: 50%;
+
+background: var(--accent2);
+
+box-shadow: 0 0 0 6px rgba(34,197,94,0.10);
+
+}
+
+footer{
+
+margin-top: 18px;
+
+color: rgba(255,255,255,0.55);
+
+font-size: 12px;
+
+text-align:center;
+
+}
+
+@media (min-width: 860px){
+
+.content{ padding: 34px 40px 42px; }
+
+h2{ font-size: 24px; }
+
+h3{ font-size: 19px; }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="wrap">
+
+<header>
+
+<div class="title">
+
+<div class="badge">😎</div>
+
+<div style="min-width:0">
+
+<h1>DSA Pattern</h1>
+
+<p class="subtitle">Readable single-page website</p>
+
+</div>
+
+</div>
+
+<div class="actions">
+
+<button class="btn" onclick="window.print()">Print / Save PDF</button>
+
+<button class="btn" onclick="navigator.clipboard.writeText(window.location.href).catch(()=>{})">Copy Link</button>
+
+</div>
+
+</header>
+
+<main>
+
+<div class="content">
+
+<p class="lead">To give you the exact level of depth you are asking for—including the Java code skeletons, real-world applications, and multiple variations—putting all 15 patterns into a single response would create an unreadable wall of text and hit system limits.</p>
+
+<p class="lead">To make this a highly actionable study guide for your MNC prep, we will tackle this in modules. Here is&nbsp; <strong>Part 1: The Array &amp; LinkedList Trinity</strong>. These three patterns alone will cover roughly 40% of the questions you encounter in initial technical screens.</p>
+
+<hr>
+
+<h2><strong>1. The Sliding Window</strong></h2>
+
+<p><strong>What it does:</strong>&nbsp;It creates a "window" (a subset of elements) over a sequential data structure like an Array or String. Instead of recalculating data for every possible subset (which takes&nbsp;O(N2)&nbsp;time), the window "slides" to the right by adding the next element and removing the oldest element, reducing the time complexity to&nbsp;O(N).</p>
+
+<p><strong>Use case:</strong>&nbsp;Use this whenever a problem asks for a&nbsp; <strong>contiguous</strong>&nbsp;subarray or substring (e.g., "longest," "shortest," or "maximum sum").</p>
+
+<p><strong>Real MNC Problems it Solves:</strong>&nbsp;*&nbsp; <strong>Network Rate Limiting:</strong>&nbsp;Checking if a user has exceeded their allowed API requests within a rolling 60-second window.</p>
+
+<ul>
+
+<li><strong>E-Commerce Analytics:</strong>&nbsp;Calculating the 7-day moving average of sales revenue without recalculating the entire week's data every single day.</li>
+
+</ul>
+
+<p><strong>The Java Skeleton (Dynamic Window Size):</strong></p>
+
+<pre><code>public int slidingWindowTemplate(int[] nums, int target) {
+
+int windowStart = 0;
+
+int currentSum = 0; // Or whatever metric you are tracking
+
+int maxLength = 0;
+
+for (int windowEnd = 0; windowEnd &lt; nums.length; windowEnd++) {
+
+// 1. Add the next element to the window
+
+currentSum += nums[windowEnd];
+
+// 2. Check if the window violates our condition
+
+while (currentSum &gt; target) {
+
+// 3. Remove the element going out of the window
+
+currentSum -= nums[windowStart];
+
+// 4. Slide the window ahead
+
+windowStart++;
+
+}
+
+// 5. Update our best result so far
+
+maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
+
+}
+
+return maxLength;
+
+}</code></pre>
+
+<p><strong>Common Variations:</strong></p>
+
+<p><strong>Maximum Sum Subarray of Size K:</strong>&nbsp;(Fixed window size)</p>
+
+<p><strong>Longest Substring with K Distinct Characters:</strong>&nbsp;(Dynamic window using a&nbsp; <code>HashMap</code>&nbsp;to track character frequency)</p>
+
+<p><strong>String Anagrams:</strong>&nbsp;(Fixed window using two character-count arrays)</p>
+
+<p><strong>Minimum Window Substring:</strong>&nbsp;(Dynamic window, often considered a "Hard" LeetCode problem, but easily solved with this exact template)</p>
+
+<hr>
+
+<h3><strong>2. Two Pointers</strong></h3>
+
+<ul>
+
+<li><strong>What it does:</strong>&nbsp;It uses two integer variables as indices pointing to different elements in an Array or String. They usually start at opposite ends and move toward each other, or they move in the same direction at different intervals.</li>
+
+<li><strong>Use case:</strong>&nbsp;Use this when dealing with&nbsp; <strong>sorted</strong>&nbsp;arrays or strings, or when you need to find a pair of elements that satisfy a specific constraint (like a target sum) in&nbsp;O(N)&nbsp;time and&nbsp;O(1)&nbsp;space.</li>
+
+<li><strong>Real MNC Problems it Solves:</strong></li>
+
+</ul>
+
+<ul>
+
+<li><strong>Financial Transactions:</strong>&nbsp;Finding two past transactions in a sorted ledger that equal a specific disputed refund amount.</li>
+
+<li><strong>Data Validation:</strong>&nbsp;Verifying if a user's input string is a valid palindrome (reads the same forward and backward) before storing it in the database.</li>
+
+</ul>
+
+<p><strong>The Java Skeleton (Opposite Ends):</strong></p>
+
+<pre><code>public int[] twoPointersTemplate(int[] arr, int targetSum) {
+
+int left = 0;
+
+int right = arr.length - 1;
+
+while (left &lt; right) {
+
+int currentSum = arr[left] + arr[right];
+
+if (currentSum == targetSum) {
+
+return new int[] {left, right}; // Found the pair
+
+}
+
+if (currentSum &lt; targetSum) {
+
+left++; // Need a larger sum, move the left pointer right
+
+} else {
+
+right--; // Need a smaller sum, move the right pointer left
+
+}
+
+}
+
+return new int[] {-1, -1}; // Pair not found
+
+}</code></pre>
+
+<p><strong>Common Variations:</strong></p>
+
+<p>1. <strong>Two Sum II:</strong>&nbsp;(Finding pairs in a sorted array)</p>
+
+<p>2. <strong>Squaring a Sorted Array:</strong>&nbsp;(Handling negative numbers by comparing the absolute values at the&nbsp; <code>left</code>&nbsp;and&nbsp; <code>right</code>pointers)</p>
+
+<p>3. <strong>3Sum / Triplet Sum to Zero:</strong>&nbsp;(Fixing one number and using Two Pointers for the remaining array)</p>
+
+<p>4. <strong>Container With Most Water:</strong>&nbsp;(Maximizing area by moving the pointer pointing to the shorter line)</p>
+
+<p>5. <strong>Remove Duplicates In-Place:</strong>&nbsp;(Using two pointers moving in the same direction, one to read and one to write)</p>
+
+<hr>
+
+<h3><strong>3. Fast &amp; Slow Pointers (Tortoise &amp; Hare)</strong></h3>
+
+<ul>
+
+<li><strong>What it does:</strong>&nbsp;A specialized version of Two Pointers where two indices move through a data structure (almost always a Linked List) at different speeds. Usually, the "slow" pointer moves one step at a time, while the "fast" pointer moves two steps.</li>
+
+<li><strong>Use case:</strong>&nbsp;Use this to detect cycles (loops) in a Linked List, to find the exact middle of a Linked List without knowing its length, or to detect infinite loops in state machines.</li>
+
+<li><strong>Real MNC Problems it Solves:</strong></li>
+
+</ul>
+
+<ul>
+
+<li><strong>Network Routing Protocols:</strong>&nbsp;Detecting if a data packet is caught in an infinite loop between routers (a cyclic path).</li>
+
+<li><strong>Memory Leak Detection:</strong>&nbsp;Identifying circular references in objects during garbage collection in runtime environments (like the V8 engine powering Node.js).</li>
+
+</ul>
+
+<p><strong>The Java Skeleton (Cycle Detection):</strong></p>
+
+<pre><code>class ListNode {
+
+int val;
+
+ListNode next;
+
+}
+
+public boolean hasCycle(ListNode head) {
+
+if (head == null || [head.next](http://head.next) == null) {
+
+return false;
+
+}
+
+ListNode slow = head;
+
+ListNode fast = head;
+
+while (fast != null &amp;&amp; [fast.next](http://fast.next) != null) {
+
+slow = [slow.next](http://slow.next);         // Moves 1 step
+
+fast = [fast.next.next](http://fast.next.next);    // Moves 2 steps
+
+if (slow == fast) {
+
+return true; // The fast pointer "lapped" the slow pointer; a cycle exists
+
+}
+
+}
+
+return false; // Fast pointer reached the end; no cycle
+
+}</code></pre>
+
+<p><strong>Common Variations:</strong></p>
+
+<p>1. <strong>LinkedList Cycle Detection:</strong>&nbsp;(The classic template above)</p>
+
+<p>2. <strong>Middle of the LinkedList:</strong>&nbsp;(When the fast pointer reaches the end, the slow pointer will be exactly in the middle)</p>
+
+<p>3. <strong>Start of LinkedList Cycle:</strong>&nbsp;(Requires math: once they meet, reset one pointer to the&nbsp; <code>head</code>&nbsp;and move both at 1 step per loop; where they meet again is the start of the cycle)</p>
+
+<p>4. <strong>Happy Number:</strong>&nbsp;(Mapping a mathematical process to a Linked List to see if it loops infinitely)</p>
+
+<p>5. <strong>Find the Duplicate Number:</strong>&nbsp;(Using Floyd's Tortoise and Hare algorithm on an array mapping)</p>
+
+<div class="quote">
+
+&gt; <strong>Study Tip:</strong>&nbsp;Do not just read these; open your IDE and type out the skeletons. The goal is muscle memory. When you see a "contiguous subarray" problem, your fingers should start typing the&nbsp; <code>for</code>&nbsp;and&nbsp; <code>while</code>&nbsp;loops of the Sliding Window without you even thinking about it.
+
+</div>
+
+<p>Would you like me to generate&nbsp; <strong>Part 2</strong>&nbsp;(Merge Intervals, Cyclic Sort, and In-Place Reversals), or would you prefer to try implementing one of these Part 1 variations right now to solidify the concepts?</p>
+
+<hr>
+
+<p>Here is&nbsp; <strong>Part 2: The Structure Manipulators</strong>.</p>
+
+<p>These three patterns are famous for showing up in the first onsite technical round for MNCs. They test your ability to sort data efficiently and manipulate pointers without using extra memory.</p>
+
+<p>I have included the Java skeletons, real-world applications, and brief explanations of the variations so you know exactly&nbsp; <em>why</em>&nbsp;a problem fits the pattern.</p>
+
+<hr>
+
+<h3><strong>4. Merge Intervals</strong></h3>
+
+<ul>
+
+<li><strong>What it does:</strong>&nbsp;This pattern deals with overlapping timelines or ranges. The trick is always the same:&nbsp; <strong>Sort the array based on the starting time</strong>&nbsp;of each interval, and then compare the current interval's ending time with the next interval's starting time to see if they overlap.</li>
+
+<li><strong>Real MNC Problems it Solves:</strong></li>
+
+</ul>
+
+<ul>
+
+<li><strong>Calendar/Scheduling Apps:</strong>&nbsp;Merging overlapping meetings in an Outlook or Google Calendar clone.</li>
+
+<li><strong>Cloud Infrastructure:</strong>&nbsp;Calculating the total duration of server downtimes when multiple error logs overlap.</li>
+
+</ul>
+
+<p><strong>The Java Skeleton:</strong></p>
+
+<pre><code>import java.util.*;
+
+public int[][] mergeIntervalsTemplate(int[][] intervals) {
+
+if (intervals.length &lt;= 1) return intervals;
+
+// 1. Sort intervals strictly by their starting values
+
+Arrays.sort(intervals, (a, b) -&gt; [Integer.compare](http://Integer.compare)(a[0], b[0]));
+
+List&lt;int[]&gt; merged = new ArrayList&lt;&gt;();
+
+int[] currentInterval = intervals[0];
+
+merged.add(currentInterval);
+
+for (int[] nextInterval : intervals) {
+
+// 2. If the current interval's END is &gt;= next interval's START, they overlap
+
+if (currentInterval[1] &gt;= nextInterval[0]) {
+
+// Merge them by taking the maximum end time
+
+currentInterval[1] = Math.max(currentInterval[1], nextInterval[1]);
+
+} else {
+
+// No overlap, add the next interval to the list and update the current tracker
+
+currentInterval = nextInterval;
+
+merged.add(currentInterval);
+
+}
+
+}
+
+return merged.toArray(new int[merged.size()][]);
+
+}</code></pre>
+
+<p><strong>Common Variations (with details):</strong></p>
+
+<p>1. <strong>Insert Interval:</strong>&nbsp;You are given a list of&nbsp; <em>already sorted</em>&nbsp;and non-overlapping intervals, plus one new interval. You must insert the new one in the correct spot and merge any resulting overlaps.</p>
+
+<p>2. <strong>Intervals Intersection:</strong>&nbsp;You are given two separate lists of intervals (e.g., User A's free time and User B's free time) and you need to find the exact intervals where they overlap (finding a time to meet).</p>
+
+<p>3. <strong>Meeting Rooms II (Classic MNC Question):</strong>&nbsp;Given an array of meeting time intervals, find the&nbsp; <em>minimum number of conference rooms</em>&nbsp;required. (This variation combines sorting the intervals with a Java&nbsp; <code>PriorityQueue</code>&nbsp;to track when rooms become empty).</p>
+
+<hr>
+
+<h3><strong>5. Cyclic Sort</strong></h3>
+
+<ul>
+
+<li><strong>What it does:</strong>&nbsp;This is a highly specific but incredibly powerful pattern. Use it&nbsp; <strong>only</strong>&nbsp;when you are dealing with an array containing numbers in a given range (like&nbsp;1&nbsp;to&nbsp;N, or&nbsp;0&nbsp;to&nbsp;N). The core idea is that in a sorted array, the number&nbsp; <code>5</code>&nbsp;should ideally be at index&nbsp; <code>4</code>. You iterate through the array and continuously swap numbers into their "correct" indices.</li>
+
+<li><strong>Real MNC Problems it Solves:</strong></li>
+
+</ul>
+
+<ul>
+
+<li><strong>Database Integrity:</strong>&nbsp;Finding missing or duplicate user IDs in a sequential database column in strictly&nbsp;O(N)time and&nbsp;O(1)&nbsp;space.</li>
+
+</ul>
+
+<p><strong>The Java Skeleton:</strong></p>
+
+<pre><code>public void cyclicSortTemplate(int[] nums) {
+
+int i = 0;
+
+while (i &lt; nums.length) {
+
+// The index where this number *should* belong
+
+// (Assuming numbers are 1 to N. If 0 to N, it's just 'nums[i]')
+
+int correctIndex = nums[i] - 1;
+
+// If the number is within our valid range AND not currently at its correct index
+
+if (nums[i] &gt; 0 &amp;&amp; nums[i] &lt;= nums.length &amp;&amp; nums[i] != nums[correctIndex]) {
+
+// Swap them
+
+int temp = nums[i];
+
+nums[i] = nums[correctIndex];
+
+nums[correctIndex] = temp;
+
+} else {
+
+// Only move to the next index if the current number is correct (or out of bounds)
+
+i++;
+
+}
+
+}
+
+// After this loop, the array is sorted. You can run a second loop to find the missing/duplicate element.
+
+}</code></pre>
+
+<p><strong>Common Variations (with details):</strong></p>
+
+<p>1. <strong>Find the Missing Number:</strong>&nbsp;Given an array from&nbsp;0&nbsp;to&nbsp;N&nbsp;with one missing number. Run the cyclic sort, then iterate through; the index that does not match its number is your missing number.</p>
+
+<p>2. <strong>Find All Duplicates in an Array:</strong>&nbsp;The array has numbers from&nbsp;1&nbsp;to&nbsp;N, but some appear twice. Sort it cyclically. Any number sitting in the wrong index at the end is a duplicate.</p>
+
+<p>3. <strong>First Missing Positive (Hard):</strong>&nbsp;You are given an unsorted array that includes negative numbers and zeroes. You must find the smallest missing positive integer. (You use cyclic sort to put all positive numbers in their correct places, ignoring negatives, then find the first gap).</p>
+
+<hr>
+
+<h3><strong>6. In-place Reversal of a LinkedList</strong></h3>
+
+<ul>
+
+<li><strong>What it does:</strong>&nbsp;Reverses the connections between nodes in a Linked List strictly without using extra memory (you cannot put the values in an array and read them backwards). It relies on manipulating three pointers simultaneously:&nbsp; <code>previous</code>,&nbsp; <code>current</code>, and&nbsp; <code>next</code>.</li>
+
+<li><strong>Real MNC Problems it Solves:</strong></li>
+
+</ul>
+
+<ul>
+
+<li><strong>State Rollbacks:</strong>&nbsp;Reversing a sequence of actions or state changes in systems where memory allocation is highly restricted (like embedded systems or low-level OS tasks).</li>
+
+</ul>
+
+<p><strong>The Java Skeleton:</strong></p>
+
+<pre><code>class ListNode {
+
+int val;
+
+ListNode next;
+
+}
+
+public ListNode reverseLinkedListTemplate(ListNode head) {
+
+ListNode previous = null;
+
+ListNode current = head;
+
+ListNode next = null;
+
+while (current != null) {
+
+// 1. Temporarily store the next node
+
+next = [current.next](http://current.next);
+
+// 2. Reverse the current node's pointer to point backwards
+
+[current.next](http://current.next) = previous;
+
+// 3. Move 'previous' and 'current' one step forward for the next loop
+
+previous = current;
+
+current = next;
+
+}
+
+// 'previous' will be pointing to the new head of the reversed list
+
+return previous;
+
+}</code></pre>
+
+<p><strong>Common Variations (with details):</strong></p>
+
+<p>1. <strong>Reverse a Sub-list:</strong>&nbsp;Instead of reversing the whole list, you are given a start position&nbsp;P&nbsp;and an end position&nbsp;Q. You must navigate to&nbsp;P, reverse only the nodes up to&nbsp;Q, and reconnect the reversed segment to the rest of the list.</p>
+
+<p>2. <strong>Reverse Nodes in k-Group (Hard):</strong>&nbsp;A classic Amazon/Microsoft question. You reverse the first&nbsp;k&nbsp;nodes, then the next&nbsp;k&nbsp;nodes, and so on. If the final group is less than&nbsp;k, you leave it as is.</p>
+
+<p>3. <strong>Palindrome LinkedList:</strong>&nbsp;You must check if a LinkedList reads the same forwards and backwards in&nbsp;O(1)&nbsp;memory. (Solution: Use Fast/Slow pointers to find the middle, reverse the second half of the list, compare the two halves, and then reverse it back to restore the original list).</p>
+
+<hr>
+
+<p>If you can confidently type out the skeletons for these 6 patterns we have covered so far, you are already equipped to pass the initial coding screen at a massive number of tech companies.</p>
+
+<p>Shall we move on to&nbsp; <strong>Part 3: Trees and Graphs (BFS/DFS)</strong>&nbsp;which are the core of second-round onsite interviews, or do you have questions about the logic in any of these skeletons?</p>
+
+<hr>
+
+<p>Here is&nbsp; <strong>Part 3: The Network Explorers (Trees and Graphs)</strong>.</p>
+
+<p>When you make it to the onsite or second-round interviews at an MNC, the difficulty spikes. You are no longer just dealing with flat arrays; you are dealing with hierarchical data (Trees) and complex networks (Graphs).</p>
+
+<p>Mastering these three patterns is non-negotiable for premium engineering roles, as they form the backbone of routing, rendering, and dependency resolution in large-scale systems.</p>
+
+<hr>
+
+<h3><strong>7. Breadth-First Search (BFS)</strong></h3>
+
+<ul>
+
+<li><strong>What it does:</strong>&nbsp;Explores a tree or graph level by level. It visits the root node, then all of the root's immediate children, then all of the grandchildren, moving horizontally before moving vertically. It relies heavily on a Java&nbsp; <code>Queue</code>&nbsp;(FIFO - First In, First Out).</li>
+
+<li><strong>Use case:</strong>&nbsp;Use this whenever a problem asks for the&nbsp; <strong>"shortest path,"</strong>&nbsp;"minimum steps," or a "level-order" traversal.</li>
+
+<li><strong>Real MNC Problems it Solves:</strong></li>
+
+</ul>
+
+<ul>
+
+<li><strong>Social Networks (LinkedIn/Facebook):</strong>&nbsp;Finding the shortest degree of connection between two users (e.g., "2nd-degree connection").</li>
+
+<li><strong>Web Crawling:</strong>&nbsp;A search engine crawler indexing the immediate links on a homepage before diving deeper into subpages.</li>
+
+</ul>
+
+<p><strong>The Java Skeleton (Tree Level-Order Traversal):</strong></p>
+
+<pre><code>import java.util.*;
+
+class TreeNode {
+
+int val;
+
+TreeNode left, right;
+
+}
+
+public List&lt;List&lt;Integer&gt;&gt; bfsTemplate(TreeNode root) {
+
+List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();
+
+if (root == null) return result;
+
+Queue&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;();
+
+queue.offer(root); // Start with the root
+
+while (!queue.isEmpty()) {
+
+int levelSize = queue.size();
+
+List&lt;Integer&gt; currentLevel = new ArrayList&lt;&gt;();
+
+// Process all nodes exactly at the current level
+
+for (int i = 0; i &lt; levelSize; i++) {
+
+TreeNode currentNode = queue.poll();
+
+currentLevel.add(currentNode.val);
+
+// Add the children to the queue for the NEXT level
+
+if (currentNode.left != null) queue.offer(currentNode.left);
+
+if (currentNode.right != null) queue.offer(currentNode.right);
+
+}
+
+result.add(currentLevel);
+
+}
+
+return result;
+
+}</code></pre>
+
+<p><strong>Common Variations:</strong></p>
+
+<p>1. <strong>Binary Tree Zigzag Level Order Traversal:</strong>&nbsp;Instead of reading left-to-right every time, you alternate (Left-to-Right, then Right-to-Left) by reversing the&nbsp; <code>currentLevel</code>&nbsp;list before adding it to the result.</p>
+
+<p>2. <strong>Minimum Depth of a Binary Tree:</strong>&nbsp;The moment you pull a node from the queue that has no left or right child, you immediately return the current level depth. That is your shortest path to a leaf.</p>
+
+<p>3. <strong>Word Ladder (Graph BFS):</strong>&nbsp;Finding the shortest transformation sequence from a start word to an end word, changing one letter at a time (each word is a node, each 1-letter difference is an edge).</p>
+
+<hr>
+
+<h3><strong>8. Depth-First Search (DFS)</strong></h3>
+
+<ul>
+
+<li><strong>What it does:</strong>&nbsp;Plunges as deeply as possible down a single branch before backtracking. Instead of moving horizontally, it goes vertically down to a leaf node, processes it, and then retreats. It relies on a Java&nbsp; <code>Stack</code>&nbsp;(LIFO - Last In, First Out) or, more commonly and cleanly, the system's&nbsp; <strong>Call Stack via Recursion</strong>.</li>
+
+<li><strong>Use case:</strong>&nbsp;Use this when a problem asks you to search through&nbsp; <strong>all possible paths</strong>, check if a path exists from A to B, or when dealing with permutations/combinations.</li>
+
+<li><strong>Real MNC Problems it Solves:</strong></li>
+
+</ul>
+
+<ul>
+
+<li><strong>File System Search:</strong>&nbsp;When you search for a file on your Mac or Windows machine, the OS uses DFS to dive deep into a specific folder and its subfolders before moving on to the next main folder.</li>
+
+<li><strong>Game AI (Chess/Checkers):</strong>&nbsp;Simulating a specific sequence of moves all the way to a win/loss state before evaluating a different sequence of moves.</li>
+
+</ul>
+
+<p><strong>The Java Skeleton (Recursive Tree Traversal):</strong></p>
+
+<pre><code>public boolean dfsTemplate(TreeNode root, int targetSum) {
+
+// 1. Base Case: If we hit a null node, this path doesn't work
+
+if (root == null) {
+
+return false;
+
+}
+
+// 2. Check if we've reached our goal (e.g., a leaf node with the exact remaining sum)
+
+if (root.left == null &amp;&amp; root.right == null &amp;&amp; root.val == targetSum) {
+
+return true;
+
+}
+
+// 3. Recursive Step: Dive down the left and right branches, updating the target
+
+boolean leftPath = dfsTemplate(root.left, targetSum - root.val);
+
+boolean rightPath = dfsTemplate(root.right, targetSum - root.val);
+
+// If either path works, return true
+
+return leftPath || rightPath;
+
+}</code></pre>
+
+<p><strong>Common Variations:</strong></p>
+
+<p>1. <strong>Path Sum II:</strong>&nbsp;Instead of just returning&nbsp; <code>true</code>&nbsp;or&nbsp; <code>false</code>, you pass a&nbsp; <code>List&lt;Integer&gt;</code>&nbsp;down the recursive calls to keep track of the exact nodes in the valid path.</p>
+
+<p>2. <strong>Lowest Common Ancestor:</strong>&nbsp;Finding the deepest shared parent of two nodes in a tree. (If you recursively search and find Node A in the left subtree and Node B in the right subtree, the current node is the ancestor).</p>
+
+<p>3. <strong>Number of Islands (Graph DFS/Matrix):</strong>&nbsp;Given a 2D grid of 1s (land) and 0s (water), you iterate through the matrix. When you find a 1, you trigger a DFS to "sink" (turn to 0) all connected 1s, counting that as one total island.</p>
+
+<hr>
+
+<h3><strong>9. Topological Sort (Directed Acyclic Graphs)</strong></h3>
+
+<ul>
+
+<li><strong>What it does:</strong>&nbsp;It provides a linear ordering of vertices in a directed graph where dependencies exist. If Node A points to Node B (A→B), Node A must appear before Node B in the final array. It works by tracking the "In-degree" (how many incoming edges a node has).</li>
+
+<li><strong>Use case:</strong>&nbsp;Use this strictly when dealing with&nbsp; <strong>dependencies</strong>, prerequisites, or scheduling tasks that must be done in a specific order.</li>
+
+<li><strong>Real MNC Problems it Solves:</strong></li>
+
+</ul>
+
+<ul>
+
+<li><strong>Package Managers (NPM/Yarn):</strong>&nbsp;When you run&nbsp; <code>npm install</code>&nbsp;in your MERN backend, NPM uses Topological Sort to ensure that base libraries are installed before the frameworks that depend on them.</li>
+
+<li><strong>CI/CD Pipelines:</strong>&nbsp;Determining the order in which microservices should be built and deployed to AWS.</li>
+
+</ul>
+
+<p><strong>The Java Skeleton (Kahn's Algorithm):</strong></p>
+
+<pre><code>import java.util.*;
+
+public List&lt;Integer&gt; topologicalSortTemplate(int vertices, int[][] edges) {
+
+List&lt;Integer&gt; sortedOrder = new ArrayList&lt;&gt;();
+
+if (vertices &lt;= 0) return sortedOrder;
+
+// 1. Initialize the Graph and In-Degree array
+
+HashMap&lt;Integer, Integer&gt; inDegree = new HashMap&lt;&gt;();
+
+HashMap&lt;Integer, List&lt;Integer&gt;&gt; graph = new HashMap&lt;&gt;();
+
+for (int i = 0; i &lt; vertices; i++) {
+
+inDegree.put(i, 0);
+
+graph.put(i, new ArrayList&lt;&gt;());
+
+}
+
+// 2. Build the Graph
+
+for (int[] edge : edges) {
+
+int parent = edge[0], child = edge[1];
+
+graph.get(parent).add(child);
+
+inDegree.put(child, inDegree.get(child) + 1); // Child has one more prerequisite
+
+}
+
+// 3. Find all sources (nodes with 0 prerequisites)
+
+Queue&lt;Integer&gt; sources = new LinkedList&lt;&gt;();
+
+for (Map.Entry&lt;Integer, Integer&gt; entry : inDegree.entrySet()) {
+
+if (entry.getValue() == 0) sources.offer(entry.getKey());
+
+}
+
+// 4. Process the sources
+
+while (!sources.isEmpty()) {
+
+int vertex = sources.poll();
+
+sortedOrder.add(vertex);
+
+// Get the node's children to decrement their in-degrees
+
+for (int child : graph.get(vertex)) {
+
+inDegree.put(child, inDegree.get(child) - 1);
+
+// If in-degree becomes 0, it's a new source!
+
+if (inDegree.get(child) == 0) {
+
+sources.offer(child);
+
+}
+
+}
+
+}
+
+// 5. Check for Cycles (If we couldn't process all vertices, there's a circular dependency)
+
+if (sortedOrder.size() != vertices) {
+
+return new ArrayList&lt;&gt;(); // Graph has a cycle, scheduling is impossible
+
+}
+
+return sortedOrder;
+
+}</code></pre>
+
+<p><strong>Common Variations:</strong></p>
+
+<p>1. <strong>Course Schedule:</strong>&nbsp;You are given a list of courses and their prerequisites. You just need to return&nbsp; <code>true</code>&nbsp;or&nbsp; <code>false</code>&nbsp;to determine if it is possible to finish all courses (checking for cycles).</p>
+
+<p>2. <strong>Alien Dictionary (Hard):</strong>&nbsp;You are given a list of words from a made-up language sorted lexicographically. You must use Topological Sort to figure out the alphabetical order of the letters in that specific language. (This is a frequent question at Meta/Facebook).</p>
+
+<hr>
+
+<p>es, we have exactly&nbsp; <strong>6 patterns left</strong>&nbsp;to complete your ultimate 15-pattern toolkit.</p>
+
+<p>The patterns we have covered so far (Arrays, Linked Lists, Trees, and Graphs) will get you through the majority of standard interviews. However, to clear the hiring bar for companies like Amazon, Google, or Microsoft, you need to know how to optimize data streams and search through massive datasets instantly.</p>
+
+<p>Here is&nbsp; <strong>Part 4: The Optimizers (Heaps and Advanced Searching)</strong>.</p>
+
+<hr>
+
+<h3><strong>10. Top 'K' Elements</strong></h3>
+
+<ul>
+
+<li><strong>What it does:</strong>&nbsp;It uses Java's&nbsp; <code>PriorityQueue</code>&nbsp;(a Heap data structure) to keep track of the largest, smallest, or most frequent elements in a dataset without sorting the entire array. If you need the top&nbsp;K&nbsp; <em>largest</em>&nbsp;elements, you use a Min-Heap of size&nbsp;K. If you need the&nbsp;K&nbsp; <em>smallest</em>, you use a Max-Heap.</li>
+
+<li><strong>Use case:</strong>&nbsp;The moment you see the words&nbsp; <strong>"top," "largest," "smallest," "Kth,"</strong>&nbsp;or&nbsp; <strong>"most frequent"</strong>&nbsp;in a problem description, you immediately reach for a Heap.</li>
+
+<li><strong>Real MNC Problems it Solves:</strong></li>
+
+</ul>
+
+<ul>
+
+<li><strong>Social Media (Twitter/X):</strong>&nbsp;Calculating the "Top 10 Trending Hashtags" in real-time from millions of tweets without sorting the entire database.</li>
+
+<li><strong>E-Commerce (Amazon):</strong>&nbsp;Displaying the "Top 5 recommended products" based on user similarity scores.</li>
+
+</ul>
+
+<p><strong>The Java Skeleton (Finding K Largest Elements):</strong></p>
+
+<pre><code>import java.util.*;
+
+public List&lt;Integer&gt; topKElementsTemplate(int[] nums, int k) {
+
+// 1. Initialize a Min-Heap (default PriorityQueue in Java)
+
+PriorityQueue&lt;Integer&gt; minHeap = new PriorityQueue&lt;&gt;();
+
+for (int i = 0; i &lt; nums.length; i++) {
+
+// 2. Add the element to the heap
+
+minHeap.add(nums[i]);
+
+// 3. If heap size exceeds K, remove the smallest element.
+
+// This ensures the heap ONLY holds the K largest elements we've seen so far.
+
+if (minHeap.size() &gt; k) {
+
+minHeap.poll();
+
+}
+
+}
+
+// 4. Return the contents of the heap
+
+return new ArrayList&lt;&gt;(minHeap);
+
+}</code></pre>
+
+<p><strong>Common Variations:</strong></p>
+
+<p>1. <strong>Kth Largest Element in an Array:</strong>&nbsp;(Exactly the template above, just return&nbsp; <code>minHeap.peek()</code>&nbsp;at the end).</p>
+
+<p>2. <strong>Top K Frequent Elements:</strong>&nbsp;(First, count frequencies using a&nbsp; <code>HashMap</code>. Then, put the map keys into the Heap, using a custom comparator to sort by their frequency value instead of the number itself).</p>
+
+<p>3. <strong>Sort Characters By Frequency:</strong>&nbsp;(Similar to above, but applied to a String).</p>
+
+<hr>
+
+<h3><strong>11. Two Heaps</strong></h3>
+
+<ul>
+
+<li><strong>What it does:</strong>&nbsp;It uses two Priority Queues simultaneously: a Max-Heap to store the smaller half of the numbers, and a Min-Heap to store the larger half. By keeping both heaps perfectly balanced in size, the "middle" elements are always instantly accessible at the top of the heaps.</li>
+
+<li><strong>Use case:</strong>&nbsp;Use this strictly when you need to find the&nbsp; <strong>median</strong>&nbsp;of a continuously growing stream of numbers.</li>
+
+<li><strong>Real MNC Problems it Solves:</strong></li>
+
+</ul>
+
+<ul>
+
+<li><strong>Fintech/Trading:</strong>&nbsp;Calculating the rolling median price of a stock ticker as thousands of transactions happen per second.</li>
+
+<li><strong>System Metrics:</strong>&nbsp;Finding the median server response time to filter out extreme outliers (like a server taking 10 seconds to respond).</li>
+
+</ul>
+
+<p><strong>The Java Skeleton (Median of a Number Stream):</strong></p>
+
+<pre><code>import java.util.*;
+
+class MedianFinder {
+
+PriorityQueue&lt;Integer&gt; maxHeap; // Lower half of numbers
+
+PriorityQueue&lt;Integer&gt; minHeap; // Upper half of numbers
+
+public MedianFinder() {
+
+maxHeap = new PriorityQueue&lt;&gt;(Collections.reverseOrder());
+
+minHeap = new PriorityQueue&lt;&gt;();
+
+}
+
+public void insertNum(int num) {
+
+// 1. Add to maxHeap first
+
+maxHeap.add(num);
+
+// 2. Balance: Ensure every number in maxHeap is smaller than minHeap
+
+minHeap.add(maxHeap.poll());
+
+// 3. Maintain size: maxHeap can have at most 1 more element than minHeap
+
+if (maxHeap.size() &lt; minHeap.size()) {
+
+maxHeap.add(minHeap.poll());
+
+}
+
+}
+
+public double findMedian() {
+
+if (maxHeap.size() == minHeap.size()) {
+
+return (maxHeap.peek() + minHeap.peek()) / 2.0; // Even number of elements
+
+}
+
+return maxHeap.peek(); // Odd number of elements (maxHeap has the extra one)
+
+}
+
+}</code></pre>
+
+<p><strong>Common Variations:</strong></p>
+
+<p>1. <strong>Find Median from Data Stream:</strong>&nbsp;(The classic template above).</p>
+
+<p>2. <strong>Sliding Window Median (Hard):</strong>&nbsp;(Combines the Sliding Window pattern with Two Heaps to find the median of every contiguous subarray of size K).</p>
+
+<p>3. <strong>Maximize Capital (Hard):</strong>&nbsp;(A greedy algorithm where you use a Min-Heap to track projects you can afford, and a Max-Heap to track the profit of those projects).</p>
+
+<hr>
+
+<h3><strong>12. K-way Merge</strong></h3>
+
+<ul>
+
+<li><strong>What it does:</strong>&nbsp;Whenever you have multiple sorted arrays or linked lists and need to merge them into one, you put the&nbsp; <em>first</em>&nbsp;element of each list into a Min-Heap. You pop the smallest element, add it to your final result, and then push the&nbsp; <em>next</em>&nbsp;element from that specific list back into the Heap.</li>
+
+<li><strong>Use case:</strong>&nbsp;Use this when a problem asks you to merge&nbsp; <strong>K sorted arrays</strong>&nbsp;or&nbsp; <strong>K sorted Linked Lists</strong>.</li>
+
+<li><strong>Real MNC Problems it Solves:</strong></li>
+
+</ul>
+
+<ul>
+
+<li><strong>Distributed Databases:</strong>&nbsp;If a database is split across 5 different geographic servers (sharding) and you run a query, the central system uses K-way merge to combine the 5 sorted results into one master list for the user.</li>
+
+</ul>
+
+<p><strong>The Java Skeleton (Merging K Sorted Linked Lists):</strong></p>
+
+<pre><code>import java.util.*;
+
+class ListNode {
+
+int val;
+
+ListNode next;
+
+}
+
+public ListNode mergeKListsTemplate(ListNode[] lists) {
+
+if (lists == null || lists.length == 0) return null;
+
+// 1. Min-Heap comparing ListNode values
+
+PriorityQueue&lt;ListNode&gt; minHeap = new PriorityQueue&lt;&gt;((a, b) -&gt; a.val - b.val);
+
+// 2. Add the root (first element) of each list to the Heap
+
+for (ListNode node : lists) {
+
+if (node != null) {
+
+minHeap.add(node);
+
+}
+
+}
+
+ListNode dummy = new ListNode(0);
+
+ListNode current = dummy;
+
+// 3. Extract smallest, and push the next element from that list
+
+while (!minHeap.isEmpty()) {
+
+ListNode smallest = minHeap.poll();
+
+[current.next](http://current.next) = smallest;
+
+current = [current.next](http://current.next);
+
+if ([smallest.next](http://smallest.next) != null) {
+
+minHeap.add([smallest.next](http://smallest.next));
+
+}
+
+}
+
+return [dummy.next](http://dummy.next);
+
+}</code></pre>
+
+<p><strong>Common Variations:</strong></p>
+
+<p>1. <strong>Merge K Sorted Lists:</strong>&nbsp;(The classic template).</p>
+
+<p>2. <strong>Kth Smallest Number in M Sorted Lists:</strong>&nbsp;(Instead of merging everything, you just run the&nbsp; <code>while</code>&nbsp;loop K times and return the Kth popped element).</p>
+
+<p>3. <strong>Kth Smallest Element in a Sorted Matrix:</strong>&nbsp;(Treat each row of the 2D matrix as an individual sorted list and apply the pattern).</p>
+
+<hr>
+
+<h3><strong>13. Modified Binary Search</strong></h3>
+
+<ul>
+
+<li><strong>What it does:</strong>&nbsp;Standard binary search only works on perfectly sorted arrays. Modified binary search adapts the&nbsp;O(logn)&nbsp;logic to work on arrays that are sorted but have been shifted, rotated, or are of infinite length.</li>
+
+<li><strong>Use case:</strong>&nbsp;Use this when you need to search an array in better than&nbsp;O(N)&nbsp;time, but the array has a "twist" (e.g.,&nbsp; <code>[4, 5, 6, 7, 0, 1, 2]</code>).</li>
+
+<li><strong>Real MNC Problems it Solves:</strong></li>
+
+</ul>
+
+<ul>
+
+<li><strong>Log Parsing:</strong>&nbsp;Searching for a specific timestamp in server logs that are rotated at midnight (meaning the chronological order suddenly resets back to zero in the middle of the file).</li>
+
+</ul>
+
+<p><strong>The Java Skeleton (Search in Rotated Sorted Array):</strong></p>
+
+<pre><code>public int searchRotatedTemplate(int[] nums, int target) {
+
+int left = 0, right = nums.length - 1;
+
+while (left &lt;= right) {
+
+int mid = left + (right - left) / 2;
+
+if (nums[mid] == target) return mid; // Found it
+
+// Trick: Determine WHICH half is strictly sorted
+
+if (nums[left] &lt;= nums[mid]) {
+
+// Left half is perfectly sorted
+
+if (target &gt;= nums[left] &amp;&amp; target &lt; nums[mid]) {
+
+right = mid - 1; // Target is in the left half
+
+} else {
+
+left = mid + 1; // Target must be in the right half
+
+}
+
+} else {
+
+// Right half is perfectly sorted
+
+if (target &gt; nums[mid] &amp;&amp; target &lt;= nums[right]) {
+
+left = mid + 1; // Target is in the right half
+
+} else {
+
+right = mid - 1; // Target must be in the left half
+
+}
+
+}
+
+}
+
+return -1;
+
+}</code></pre>
+
+<p><strong>Common Variations:</strong></p>
+
+<p>1. <strong>Search in Rotated Array:</strong>&nbsp;(The template above).</p>
+
+<p>2. <strong>Find Minimum in Rotated Sorted Array:</strong>&nbsp;(Instead of looking for a target, you look for the point where the array "drops" from high to low).</p>
+
+<p>3. <strong>Search in a Sorted Infinite Array:</strong>&nbsp;(Since you don't know the&nbsp; <code>length</code>, you start&nbsp; <code>right</code>&nbsp;at index 1, and keep doubling it&nbsp; <code>right = right * 2</code>&nbsp;until&nbsp; <code>nums[right]</code>&nbsp;is greater than your target,&nbsp; <em>then</em>&nbsp;you do standard binary search).</p>
+
+<hr>
+
+<p>We now have 13 patterns locked in. There are only&nbsp; <strong>two left</strong>&nbsp;to hit the grand total of 15, and they are the heavyweights:&nbsp; <strong>Backtracking (Subsets)</strong>&nbsp;and&nbsp; <strong>Dynamic Programming (0/1 Knapsack)</strong>.</p>
+
+<p>Are you ready to tackle the final two to complete your complete MNC interview toolkit?</p>
+
+<hr>
+
+<p>Here is&nbsp; <strong>Part 5: The Heavyweights (Combinatorics and Optimization)</strong>.</p>
+
+<p>These final two patterns are the "final bosses" of MNC interviews. If a company like Amazon or Google wants to truly test your algorithmic depth, they will ask a question from this category. They require you to think in terms of multiple decision trees and overlapping calculations.</p>
+
+<hr>
+
+<h3><strong>14. Backtracking (Subsets / Combinations)</strong></h3>
+
+<ul>
+
+<li><strong>What it does:</strong>&nbsp;It systematically explores all possible solutions by building a candidate solution step-by-step. If it realizes the current path cannot lead to a valid solution (or if it finishes a valid path), it "backtracks" by undoing its last choice and trying a different branch.</li>
+
+<li><strong>Use case:</strong>&nbsp;Use this whenever a problem asks you to generate&nbsp; <strong>"all possible..."</strong>&nbsp;subsets, permutations, combinations, or to solve a maze/puzzle (like Sudoku).</li>
+
+<li><strong>Real MNC Problems it Solves:</strong></li>
+
+</ul>
+
+<ul>
+
+<li><strong>Cybersecurity:</strong>&nbsp;Brute-forcing password combinations by generating all possible permutations of a character set.</li>
+
+<li><strong>Logistics &amp; Routing:</strong>&nbsp;Calculating all possible delivery routes for a fleet of trucks before feeding the paths into an optimization engine.</li>
+
+</ul>
+
+<p><strong>The Java Skeleton (Generating All Subsets):</strong></p>
+
+<pre><code>import java.util.*;
+
+public List&lt;List&lt;Integer&gt;&gt; backtrackingTemplate(int[] nums) {
+
+List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();
+
+// Arrays.sort(nums); // Optional: if the problem requires handling duplicates
+
+backtrack(result, new ArrayList&lt;&gt;(), nums, 0);
+
+return result;
+
+}
+
+private void backtrack(List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; tempList, int[] nums, int start) {
+
+// 1. Add the current subset to our final result (Deep copy is required!)
+
+result.add(new ArrayList&lt;&gt;(tempList));
+
+// 2. Iterate through the remaining choices
+
+for (int i = start; i &lt; nums.length; i++) {
+
+// 3. Make a choice (Include the number)
+
+tempList.add(nums[i]);
+
+// 4. Explore further down this path (increment 'start' so we don't reuse elements)
+
+backtrack(result, tempList, nums, i + 1);
+
+// 5. BACKTRACK: Undo the choice to explore a different path
+
+tempList.remove(tempList.size() - 1);
+
+}
+
+}</code></pre>
+
+<p><strong>Common Variations:</strong></p>
+
+<p>1. <strong>Permutations:</strong>&nbsp;(Instead of starting the&nbsp; <code>for</code>&nbsp;loop at&nbsp; <code>start</code>, you always start at&nbsp; <code>0</code>&nbsp;but keep a boolean&nbsp; <code>visited</code>&nbsp;array so you don't reuse the same number in the current path).</p>
+
+<p>2. <strong>Combination Sum:</strong>&nbsp;(You are given a target number. You keep adding elements and recurse. If the sum exceeds the target, you backtrack. If it equals the target, you save the&nbsp; <code>tempList</code>).</p>
+
+<p>3. <strong>N-Queens (Hard):</strong>&nbsp;(Placing queens on a chessboard such that none attack each other. You place a queen, validate the board, and if it's safe, recurse to the next row. If no safe spot exists, backtrack).</p>
+
+<hr>
+
+<h3><strong>15. Dynamic Programming: 0/1 Knapsack</strong></h3>
+
+<ul>
+
+<li><strong>What it does:</strong>&nbsp;Dynamic Programming (DP) is essentially "smart recursion." It breaks a problem into smaller overlapping subproblems, solves them once, and stores the results in an array (Memoization or Tabulation) so it never calculates the same thing twice. The "0/1 Knapsack" is the foundation of DP optimization, where you must either take an item (1) or leave it (0) to maximize profit within a capacity.</li>
+
+<li><strong>Use case:</strong>&nbsp;Use this whenever a problem asks you to&nbsp; <strong>"maximize/minimize"</strong>&nbsp;something, find the&nbsp; <strong>"number of ways,"</strong>&nbsp;or when you have limited capacity (like time or budget).</li>
+
+<li><strong>Real MNC Problems it Solves:</strong></li>
+
+</ul>
+
+<ul>
+
+<li><strong>Cloud Computing:</strong>&nbsp;AWS allocating virtual machines to a physical server. The physical server has limited RAM (capacity), and AWS wants to pack in as many high-paying instances (profit) as possible.</li>
+
+<li><strong>Financial Portfolio:</strong>&nbsp;Selecting a combination of stocks to maximize expected return without exceeding your total investment budget.</li>
+
+</ul>
+
+<p><strong>The Java Skeleton (Bottom-Up 2D Tabulation):</strong></p>
+
+<pre><code>public int knapsackTemplate(int[] profits, int[] weights, int capacity) {
+
+int n = profits.length;
+
+if (capacity &lt;= 0 || n == 0 || weights.length != n) return 0;
+
+// dp[i][c] represents the max profit for 'i' items with 'c' capacity
+
+int[][] dp = new int[n][capacity + 1];
+
+// 1. Base case: If we have only 1 item, we take it if it fits the capacity
+
+for (int c = 0; c &lt;= capacity; c++) {
+
+if (weights[0] &lt;= c) {
+
+dp[0][c] = profits[0];
+
+}
+
+}
+
+// 2. Process all other items and capacities
+
+for (int i = 1; i &lt; n; i++) {
+
+for (int c = 1; c &lt;= capacity; c++) {
+
+int profitIfIncluded = 0;
+
+int profitIfExcluded = 0;
+
+// Choice A: Include the item (if it fits)
+
+if (weights[i] &lt;= c) {
+
+// Profit of current item + max profit of remaining capacity from previous items
+
+profitIfIncluded = profits[i] + dp[i - 1][c - weights[i]];
+
+}
+
+// Choice B: Exclude the item
+
+// Max profit is just whatever we could get from the previous items at this capacity
+
+profitIfExcluded = dp[i - 1][c];
+
+// 3. Take the maximum of both choices
+
+dp[i][c] = Math.max(profitIfIncluded, profitIfExcluded);
+
+}
+
+}
+
+// The bottom-right cell contains the maximum profit for all items at full capacity
+
+return dp[n - 1][capacity];
+
+}</code></pre>
+
+<p><strong>Common Variations:</strong></p>
+
+<p>1. <strong>Subset Sum (Boolean DP):</strong>&nbsp;(Instead of maximizing profit, the DP array stores&nbsp; <code>true/false</code>&nbsp;to determine if a subset of numbers can add up to a specific target).</p>
+
+<p>2. <strong>Equal Subset Sum Partition:</strong>&nbsp;(Can you split an array into two halves with equal sums? Just calculate the total sum of the array, divide by 2, and use the Subset Sum logic to see if you can reach exactly that half-sum).</p>
+
+<p>3. <strong>Target Sum:</strong>&nbsp;(Assigning&nbsp; <code>+</code>&nbsp;or&nbsp; &nbsp;to numbers in an array to reach a target. It mathematically converts directly into a 0/1 Knapsack problem).</p>
+
+<hr>
+
+<h3><strong>The Blueprint is Complete</strong></h3>
+
+<p>You now possess the entire 15-pattern arsenal. If you commit these 15 skeletons to your Java muscle memory, you will be prepared for virtually anything an MNC throws at you.</p>
+
+<p>Your overall strategy is now flawlessly aligned:</p>
+
+<p>1. <strong>The Resume Hook:</strong>&nbsp;RabbitFolio is deployed on Vercel, secured with SSL, and linked at the top of your resume to prove your MERN stack architecture skills.</p>
+
+<p>2. <strong>The Interview Engine:</strong>&nbsp;You have the exact Java templates needed to clear the technical screens.</p>
+
+<p>The best way to study these is not by reading them all at once. Pick&nbsp; <strong>one pattern</strong>&nbsp;(like Two Pointers), open LeetCode, filter by that specific pattern, and solve 5 questions using the exact skeleton provided above until it feels natural.</p>
+
+<p>Which of these 15 patterns are you going to code up first?</p>
+
+</div>
+
+</main>
+
+<footer>
+
+Tip: Use the “Print / Save PDF” button to export a perfectly formatted PDF.
+
+</footer>
+
+</div>
+
+</body>
+
+</html>
