@@ -134,7 +134,7 @@ function App() {
       <div className="fixed top-3 right-3 sm:top-4 sm:right-4 md:top-6 md:right-6 z-[110] block resume-btn-fixed">
         <button
           onClick={() => setShowPopup(true)}
-          className="group relative flex items-center justify-center px-3 sm:px-4 md:px-5 lg:px-8 py-1.5 md:py-2 md:py-2.5 bg-[#121212] text-white rounded-full font-black text-[8px] sm:text-[9px] md:text-xs uppercase tracking-[0.15em] md:tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-xl"
+          className="group relative flex items-center justify-center px-3 sm:px-4 md:px-5 lg:px-8 py-1.5 md:py-2.5 bg-[#121212] text-white rounded-full font-black text-[8px] sm:text-[9px] md:text-xs uppercase tracking-[0.15em] md:tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-xl"
         >
           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#ff5722] to-[#ff9800] opacity-0 group-hover:opacity-100 transition-opacity" />
           <span className="relative whitespace-nowrap">Resume</span>
@@ -426,7 +426,7 @@ function App() {
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 lg:gap-16 mb-12 md:mb-24">
-            <div className="col-span-1 sm:col-span-2 lg:col-span-1">
+            <div className="col-span-1 sm:col-span-2 lg:col-span-2">
               <div className="flex items-center gap-3 mb-6 md:mb-8">
                 <div className="w-3 h-3 rounded-full bg-[#ff5722]" />
                 <span className="font-black text-lg md:text-xl tracking-tighter uppercase">RabbitFolio</span>
