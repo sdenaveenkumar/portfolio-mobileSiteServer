@@ -458,7 +458,7 @@ function App() {
             </div>
           </div>
 
-          <div className="pt-8 md:pt-16 border-t border-white/5 flex flex-col gap-4 md:gap-0 md:flex-row justify-between items-start md:items-center text-center md:text-left">
+          <div className="pt-8 md:pt-16 border-t border-white/5 flex flex-col gap-y-4 md:gap-x-8 md:flex-row justify-between items-start md:items-center text-center md:text-left">
             <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-white/20 justify-center md:justify-start w-full md:w-auto order-3 md:order-1">
               Made with <Heart className="w-3 h-3 text-[#ff5722] fill-[#ff5722]" /> by Naveen Kumar
             </div>

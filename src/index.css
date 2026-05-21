@@ -195,7 +195,7 @@ body {
 
   .resume-btn-fixed button {
     padding: 0.4rem 1rem;
-    font-size: 8px;
+    font-size: 9px;
   }
 
   /* Better spacing for sections */
@@ -216,14 +216,8 @@ body {
     right: auto !important;
   }
 
-  .floating-badge.badge-node {
-    display: none;
-  }
-
-  .floating-badge.badge-react {
-    display: none;
-  }
-
+  .floating-badge.badge-node,
+  .floating-badge.badge-react,
   .floating-badge.badge-gsap {
     display: none;
   }
@@ -289,7 +283,7 @@ body {
 
   .resume-btn-fixed button {
     padding: 0.3rem 0.8rem;
-    font-size: 7px;
+    font-size: 10px;
   }
 
   .hero-portrait {
