@@ -304,7 +304,7 @@ function App() {
               </p>
               <h3 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-tight md:leading-none">Featured Projects</h3>
             </div>
-            <a href="https://github.com/sdenaveenkumar" target="_blank" className="text-xs md:text-sm font-black uppercase tracking-widest flex items-center gap-2 group border-b-2 border-[#ff5722] pb-1 w-fit">
+            <a href="https://github.com/sdenaveenkumar" target="_blank" rel="noopener noreferrer" className="text-xs md:text-sm font-black uppercase tracking-widest flex items-center gap-2 group border-b-2 border-[#ff5722] pb-1 w-fit">
               View All on Github
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
@@ -317,7 +317,7 @@ function App() {
                   <div className="relative z-10">
                     <div className="flex justify-between items-start mb-6 md:mb-8">
                       <span className="text-[10px] font-black uppercase tracking-widest text-black/30">{project.role}</span>
-                      <a href={project.link} target="_blank" className="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center hover:bg-[#ff5722] hover:text-white transition-all flex-shrink-0">
+                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center hover:bg-[#ff5722] hover:text-white transition-all flex-shrink-0">
                         <ExternalLink className="w-4 h-4" />
                       </a>
                     </div>
@@ -378,8 +378,8 @@ function App() {
                   <div className="min-w-0">
                     <p className="text-[10px] font-black uppercase tracking-widest text-black/30 mb-1">Social</p>
                     <div className="flex gap-3 md:gap-4 mt-2 flex-wrap">
-                      <a href="https://github.com/sdenaveenkumar" target="_blank" className="text-xs md:text-sm font-black border-b border-black/10 hover:border-[#ff5722] transition-colors">Github</a>
-                      <a href="https://linkedin.com/in/sde-naveen-kumar" target="_blank" className="text-xs md:text-sm font-black border-b border-black/10 hover:border-[#ff5722] transition-colors">LinkedIn</a>
+                      <a href="https://github.com/sdenaveenkumar" target="_blank" rel="noopener noreferrer" className="text-xs md:text-sm font-black border-b border-black/10 hover:border-[#ff5722] transition-colors">Github</a>
+                      <a href="https://linkedin.com/in/sde-naveen-kumar" target="_blank" rel="noopener noreferrer" className="text-xs md:text-sm font-black border-b border-black/10 hover:border-[#ff5722] transition-colors">LinkedIn</a>
                     </div>
                   </div>
                 </div>
@@ -426,7 +426,7 @@ function App() {
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 lg:gap-16 mb-12 md:mb-24">
-            <div className="col-span-1 sm:col-span-2 lg:col-span-2">
+            <div className="col-span-1 sm:col-span-2">
               <div className="flex items-center gap-3 mb-6 md:mb-8">
                 <div className="w-3 h-3 rounded-full bg-[#ff5722]" />
                 <span className="font-black text-lg md:text-xl tracking-tighter uppercase">RabbitFolio</span>
