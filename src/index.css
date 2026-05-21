@@ -223,10 +223,6 @@ body {
   }
 
   /* Contact section improvements */
-  .space-y-10 {
-    gap: 1.5rem;
-  }
-
   .w-14.h-14 {
     width: 3rem;
     height: 3rem;
@@ -268,7 +264,7 @@ body {
   }
 
   .nav-capsule {
-    gap: 0rem;
+    gap: 0;
     padding: 0.15rem;
   }
 

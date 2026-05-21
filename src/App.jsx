@@ -137,7 +137,7 @@ function App() {
           className="group relative flex items-center justify-center px-3 sm:px-4 md:px-5 lg:px-8 py-1.5 md:py-2.5 bg-[#121212] text-white rounded-full font-black text-[10px] sm:text-[10px] md:text-xs uppercase tracking-[0.15em] md:tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-xl"
         >
           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#ff5722] to-[#ff9800] opacity-0 group-hover:opacity-100 transition-opacity" />
-          <span className="relative whitespace-nowrap">Resume</span>
+          <span className="relative">Resume</span>
         </button>
       </div>
 
@@ -347,7 +347,7 @@ function App() {
                 Get in Touch
               </p>
               <h3 className="text-4xl md:text-6xl lg:text-8xl font-black mb-8 md:mb-12 tracking-tighter leading-tight md:leading-none">
-                LET'S TALK <br className="hidden md:block" />ABOUT YOU.
+                LET'S<br className="hidden md:block" /> TALK ABOUT YOU.
               </h3>
 
               <div className="space-y-6 md:space-y-10 mt-10 md:mt-16">
