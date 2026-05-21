@@ -134,7 +134,7 @@ function App() {
       <div className="fixed top-3 right-3 sm:top-4 sm:right-4 md:top-6 md:right-6 z-[110] block resume-btn-fixed">
         <button
           onClick={() => setShowPopup(true)}
-          className="group relative flex items-center justify-center px-3 sm:px-4 md:px-5 lg:px-8 py-1.5 md:py-2.5 bg-[#121212] text-white rounded-full font-black text-[8px] sm:text-[9px] md:text-xs uppercase tracking-[0.15em] md:tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-xl"
+          className="group relative flex items-center justify-center px-3 sm:px-4 md:px-5 lg:px-8 py-1.5 md:py-2.5 bg-[#121212] text-white rounded-full font-black text-[10px] sm:text-[10px] md:text-xs uppercase tracking-[0.15em] md:tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-xl"
         >
           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#ff5722] to-[#ff9800] opacity-0 group-hover:opacity-100 transition-opacity" />
           <span className="relative whitespace-nowrap">Resume</span>
@@ -347,7 +347,7 @@ function App() {
                 Get in Touch
               </p>
               <h3 className="text-4xl md:text-6xl lg:text-8xl font-black mb-8 md:mb-12 tracking-tighter leading-tight md:leading-none">
-                LET'S TALK<br className="hidden md:block" />ABOUT YOU.
+                LET'S TALK <br className="hidden md:block" />ABOUT YOU.
               </h3>
 
               <div className="space-y-6 md:space-y-10 mt-10 md:mt-16">
@@ -458,7 +458,7 @@ function App() {
             </div>
           </div>
 
-          <div className="pt-8 md:pt-16 border-t border-white/5 flex flex-col gap-y-4 md:gap-x-8 md:flex-row justify-between items-start md:items-center text-center md:text-left">
+          <div className="pt-8 md:pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-start md:items-center text-center md:text-left gap-4 md:gap-8">
             <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-white/20 justify-center md:justify-start w-full md:w-auto order-3 md:order-1">
               Made with <Heart className="w-3 h-3 text-[#ff5722] fill-[#ff5722]" /> by Naveen Kumar
             </div>

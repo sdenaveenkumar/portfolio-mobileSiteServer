@@ -149,7 +149,7 @@ body {
 
   .floating-badge.badge-gsap {
     bottom: 25% !important;
-    left: 0px !important;
+    left: 0 !important;
   }
 
   /* Form improvements */
@@ -195,7 +195,7 @@ body {
 
   .resume-btn-fixed button {
     padding: 0.4rem 1rem;
-    font-size: 9px;
+    font-size: 10px;
   }
 
   /* Better spacing for sections */
